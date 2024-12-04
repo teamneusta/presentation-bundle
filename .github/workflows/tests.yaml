@@ -25,6 +25,8 @@ jobs:
             dependencies: "highest" # Pimcore 11.*
           - php-version: "8.2"
             dependencies: "highest" # Pimcore 11.*
+          - php-version: "8.3"
+            dependencies: "highest" # Pimcore 11.*
 
     steps:
       - name: Git Checkout
