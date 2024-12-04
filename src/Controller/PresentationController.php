@@ -13,12 +13,15 @@ class PresentationController extends FrontendController
     {
     }
 
+    /**
+     * @throws \RuntimeException
+     */
     public function presentationAction(): Response
     {
-        $slidesMarkup = '';
-        if ($this->document instanceof PageSnippet) {
-            $slidesMarkup = $this->presentationRenderer->renderPresentation($this->document);
+        if (!$this->document instanceof PageSnippet) {
+            throw new \RuntimeException('Presentation slides can only be used with PageSnippets');
         }
+        $slidesMarkup = $this->presentationRenderer->renderPresentation($this->document);
 
         return $this->render('@NeustaPimcorePresentation/Presentation/presentation.html.twig', [
             'slidesMarkup' => $slidesMarkup,
